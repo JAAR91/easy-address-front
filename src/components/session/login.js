@@ -32,7 +32,7 @@ const Login = () => {
 
   return (
     <form className="login-form" onSubmit={(e) => e.preventDefault()}>
-      <label className="login-title">Login:</label>
+      <label className="login-tittle">Login</label>
       <input
         type="text"
         className="login-input"

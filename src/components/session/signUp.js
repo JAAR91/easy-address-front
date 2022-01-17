@@ -32,7 +32,7 @@ const SignUp = () => {
 
   return (
     <form className="login-form" onSubmit={(e) => e.preventDefault()}>
-      <label className="login-title">Create new User:</label>
+      <label className="login-tittle">Create new User:</label>
       <input
         type="text"
         className="login-input"
@@ -49,7 +49,7 @@ const SignUp = () => {
         className="login-submit"
         onClick={handleSubmit}
       >
-        Login
+        SignUp
       </button>
     </form>
   );

@@ -14,8 +14,12 @@ const Session = () => {
           <SignUp />
       }
       <div>
-        <button onClick={()=> setSessionOption(false)}>SignUp</button>
-        <button onClick={()=> setSessionOption(true)}>Login</button>
+        {
+          sessionOption ?
+            <button className="session-link" onClick={()=> setSessionOption(false)}>SignUp</button>
+          :
+            <button className="session-link" onClick={()=> setSessionOption(true)}>Login</button>
+        }
       </div>
     </div>
   );
