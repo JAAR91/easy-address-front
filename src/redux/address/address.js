@@ -77,25 +77,21 @@ export const deleteAddressFetch = ( id ) => async (dispatch) => {
   await fetch(`https://jaar-easy-address.herokuapp.com/api/v1/address/delete/${id}`, {
     method: 'DELETE',
     headers: { 
-      "Content-Type": "application/json",
       "Authorization" : token
     },
-    redirect: 'follow',
+    mode: "cors",
   }).then((response) => {
-    // if (response.status === 200){
-    //   return response.json();
-    // } else {
-    //   console.log("Wrong Token!!!");
-    // }
-    // return false;
-    console.log(response);
-    return response.json();
+    if (response.status === 200){
+      return response.json();
+    } else {
+      console.log("Wrong Token!!!");
+    }
+    return false;
   })
   .then((data) => {
-    // if (data) {
-    //   dispatch(newAddress(id));
-    // }
-    console.log(data);
+    if (data) {
+      dispatch(deleteAddress(id));
+    }
   })
   .catch((error) => console.log(error));
 };
@@ -109,6 +105,8 @@ export const reducer = (state = initialState, action) => {
         ...state,
         action.payload
       ];
+    case DELETE_ADDRESS:
+      return [...state.filter((address) => address.id !== action.payload)];
     default:
       return state;
   }

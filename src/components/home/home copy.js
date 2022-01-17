@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from "react-router-dom";
 import { bindActionCreators } from 'redux';
 import { addressFetch } from '../../redux/address/address';
 import DeleteAddress from '../addresses/deleteAddress';
@@ -10,11 +9,6 @@ const HomePage = () => {
   const { addresses } = useSelector((state) => state);
   const dispatch = useDispatch();
   const loadAddresses = bindActionCreators(addressFetch, dispatch);
-  const navigate = useNavigate();
-
-  const newAddressBtn = () => {
-    navigate("/address/new");
-  };
 
   useEffect(() => {
     loadAddresses();
@@ -55,7 +49,7 @@ const HomePage = () => {
             </li>
           }
           <li className="address-container">
-              <button type="button" className="home-add-address-btn" onClick={newAddressBtn}>Agregar Direcciones</button>
+              <button type="button" className="home-add-address-btn">Agregar Direcciones</button>
           </li>
         </ul>
       </div>
