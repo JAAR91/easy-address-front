@@ -12,7 +12,8 @@ const HomePage = () => {
 
   useEffect(() => {
     loadAddresses();
-  }, [loadAddresses]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className="home-container">
