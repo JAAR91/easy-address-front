@@ -1,6 +1,7 @@
 const LOAD_ADDRESSES = 'EASE_ADDRESS/ADDRESS/LOAD_ADDRESSES';
 const NEW_ADDRESS = 'EASE_ADDRESS/ADDRESS/NEW_ADDRESS';
 const DELETE_ADDRESS = 'EASE_ADDRESS/ADDRESS/DELETE_ADDRESS';
+const UPDATE_ADDRESS = 'EASE_ADDRESS/ADDRESS/UPDATE_ADDRESS';
 
 const initialState = [];
 
@@ -16,6 +17,11 @@ export const newAddress = (payload) => ({
 
 export const deleteAddress = (payload) => ({
   type: DELETE_ADDRESS,
+  payload,
+});
+
+export const updateAddress = (payload) => ({
+  type: UPDATE_ADDRESS,
   payload,
 });
 
@@ -96,6 +102,34 @@ export const deleteAddressFetch = ( id ) => async (dispatch) => {
   .catch((error) => console.log(error));
 };
 
+export const updateAddressFetch = ( id, colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais ) => async (dispatch) => {
+  const { token } = JSON.parse(localStorage.getItem("easy-address-data"));
+  await fetch(`https://jaar-easy-address.herokuapp.com/api/v1/address/update/${id}`, {
+    method: 'PATCH',
+    headers: { 
+      "Content-Type": "application/json",
+      "Authorization" : token
+    },
+    body: JSON.stringify({
+      colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais,
+    }),
+    redirect: 'follow',
+  }).then((response) => {
+    if (response.status === 200){
+      return response.json();
+    } else {
+      console.log("Wrong Token!!!");
+    }
+    return false;
+  })
+  .then((data) => {
+    if (data) {
+      dispatch(updateAddress({id, colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais}));
+    }
+  })
+  .catch((error) => console.log(error));
+};
+
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_ADDRESSES:
@@ -107,6 +141,13 @@ export const reducer = (state = initialState, action) => {
       ];
     case DELETE_ADDRESS:
       return [...state.filter((address) => address.id !== action.payload)];
+    case UPDATE_ADDRESS:
+      return [...state.map((address) => {
+        if(address.id === action.payload.id) {
+          return action.payload;
+        }
+        return address;
+      })];
     default:
       return state;
   }

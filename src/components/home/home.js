@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { bindActionCreators } from 'redux';
 import { addressFetch } from '../../redux/address/address';
 import DeleteAddress from '../addresses/deleteAddress';
@@ -44,7 +44,12 @@ const HomePage = () => {
                     </div>
                   </div>
                   <div>
-                      <button className="edit-address-btn">Edit</button>
+                      <Link
+                        to={`/address/${address.id}`}
+                        className="edit-address-btn"
+                      >
+                        Editar
+                      </Link>
                       <DeleteAddress id={address.id} />
                     </div>
                 </li>

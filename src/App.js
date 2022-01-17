@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import Navbar from './components/navbar/navbar';
 import HomePage from './components/home/home';
 import Session from './components/session/session';
-import NewAddress from './components/addresses/newaddress';
+import Address from './components/addresses/Address';
 
 function App() {
   const { session } = useSelector((state) => state);
@@ -19,7 +19,7 @@ function App() {
             <Navbar />
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/address/new" element={<NewAddress />} />
+              <Route path="/address/:id" element={<Address />} />
             </Routes>
           </>
         :
