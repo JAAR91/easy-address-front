@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addressFetch } from '../../redux/address/address';
+import DeleteAddress from '../addresses/deleteAddress';
 import "./home.css"
 
 const HomePage = () => {
@@ -37,7 +38,7 @@ const HomePage = () => {
                   </div>
                   <div>
                       <button className="edit-address-btn">Edit</button>
-                      <button className="del-address-btn">Delete</button>
+                      <DeleteAddress id={address.id} />
                     </div>
                 </li>
               ))
