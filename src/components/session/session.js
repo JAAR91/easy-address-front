@@ -7,19 +7,21 @@ const Session = () => {
   const [ sessionOption, setSessionOption ] = useState(true);
   return (
     <div className="session-container">
-      {
-        sessionOption ?
-          <Login />
-        :
-          <SignUp />
-      }
-      <div>
+      <div className="forms-container">
         {
           sessionOption ?
-            <button className="session-link" onClick={()=> setSessionOption(false)}>SignUp</button>
+            <Login />
           :
-            <button className="session-link" onClick={()=> setSessionOption(true)}>Login</button>
+            <SignUp />
         }
+        <div>
+          {
+            sessionOption ?
+              <button className="session-link" onClick={()=> setSessionOption(false)}>Registrate</button>
+            :
+              <button className="session-link" onClick={()=> setSessionOption(true)}>Ya tienes cuenta</button>
+          }
+        </div>
       </div>
     </div>
   );

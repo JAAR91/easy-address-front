@@ -28,7 +28,7 @@ export const logOutSession = () => ({
   },
 });
 
-export const newUserFetch = ( username, password ) => async (dispatch) => {
+export const newUserFetch = ( username, password, setLoading, setMsg ) => async (dispatch) => {
   await fetch('https://jaar-easy-address.herokuapp.com/api/v1/user/new', {
     method: 'POST',
     headers: { "Content-Type": "application/json" },
@@ -40,20 +40,22 @@ export const newUserFetch = ( username, password ) => async (dispatch) => {
   }).then((response) => {
     if (response.status === 200){
       return response.json();
-    } else {
-      console.log("Unable to create new user!");
+    } else if(response.status === 409) {
+      setMsg("Usuario no disponible");
+      setLoading(false);
     }
     return false;
   })
   .then((data) => {
     if (data) {
+      setLoading(false);
       dispatch(newSession(data.token));
     }
   })
   .catch((error) => console.log(error));
 };
 
-export const loginFetch = ( username, password ) => async (dispatch) => {
+export const loginFetch = ( username, password, setLoading, setMsg ) => async (dispatch) => {
   await fetch('https://jaar-easy-address.herokuapp.com/api/v1/login', {
     method: 'POST',
     headers: { "Content-Type": "application/json" },
@@ -66,16 +68,21 @@ export const loginFetch = ( username, password ) => async (dispatch) => {
     if (response.status === 200){
       return response.json();
     } else {
-      console.log("unable to login wrong username or password");
+      setMsg("Usuario o contrasena invalida!");
+      setLoading(false);
     }
     return false;
   })
   .then((data) => {
     if (data) {
+      setLoading(false);
       dispatch(newSession(data.token));
     }
   })
-  .catch((error) => console.log(error));
+  .catch(() => {
+    setMsg("No se pudo conectar con el servidor!");
+    setLoading(false);
+  });
 };
 
 export const reducer = (state = initialState, action) => {
