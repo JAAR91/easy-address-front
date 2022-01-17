@@ -6,6 +6,7 @@ import {
 import { useSelector } from 'react-redux';
 import HomePage from './components/home/home';
 import Session from './components/session/session';
+import NewAddress from './components/addresses/newaddress';
 
 function App() {
   const { session } = useSelector((state) => state);
@@ -15,6 +16,7 @@ function App() {
         (session.status) ?
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/address/new" element={<NewAddress />} />
           </Routes>
         :
           <Session />

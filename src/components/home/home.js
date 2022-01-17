@@ -8,7 +8,6 @@ const HomePage = () => {
   const { addresses } = useSelector((state) => state);
   const dispatch = useDispatch();
   const loadAddresses = bindActionCreators(addressFetch, dispatch);
-  console.log(addresses);
 
   useEffect(() => {
     loadAddresses();
@@ -43,7 +42,7 @@ const HomePage = () => {
                 </li>
               ))
             :
-            <li>
+            <li className="address-container">
               No hay direcciones disponibles
             </li>
           }

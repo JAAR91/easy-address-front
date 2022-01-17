@@ -38,12 +38,14 @@ const Login = () => {
         className="login-input"
         value={formData.username} 
         onChange={(e) => updateUsername(e.target.value)}
+        placeholder="Ingresa nombre de usuario"
       />
       <input
         type="password"
         className="login-input"
         value={formData.password} 
         onChange={(e) => updatePassword(e.target.value)}
+        placeholder="Contrasena"
       />
       <button
         className="login-submit"
