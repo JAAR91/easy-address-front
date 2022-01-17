@@ -1,0 +1,47 @@
+.confirmation-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.144);
+}
+
+.confirmation-window {
+  background-color: rgb(59, 110, 145);
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.yes-btn {
+  border: 3px solid #ff0000;
+  font-size: 20px;
+  background-color: #ffffff;
+  color: #ff0000;
+  border-radius: 10px;
+  padding: 4px 30px;
+}
+
+.yes-btn:hover {
+  border: 3px solid #ffffff;
+  background-color: #ff0000;
+  color: #ffffff;
+}
+
+.no-btn {
+  border: 3px solid #27b947;
+  font-size: 20px;
+  background-color: #ffffff;
+  color: #27b947;
+  border-radius: 10px;
+  padding: 4px 30px;
+}
+
+.no-btn:hover {
+  border: 3px solid #ffffff;
+  background-color: #27b947;
+  color: #ffffff;
+}

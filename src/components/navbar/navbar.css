@@ -1,6 +1,6 @@
 .navbar-container {
   width: 100%;
-  height: 6vh;
+  height: 7vh;
   background-color: #503570;
   color: white;
 }
@@ -39,6 +39,7 @@
 .active {
   background-color: white;
   color: #503570;
+  box-shadow: 0 -3px 2px 0 black;
 }
 
 .logout-link {

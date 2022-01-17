@@ -78,7 +78,7 @@ export const newAddressFetch = ( colonia, ext_number, int_number, calle, municip
   .catch((error) => console.log(error));
 };
 
-export const deleteAddressFetch = ( id ) => async (dispatch) => {
+export const deleteAddressFetch = ( id, setLoadingStatus ) => async (dispatch) => {
   const { token } = JSON.parse(localStorage.getItem("easy-address-data"));
   await fetch(`https://jaar-easy-address.herokuapp.com/api/v1/address/delete/${id}`, {
     method: 'DELETE',
@@ -88,14 +88,7 @@ export const deleteAddressFetch = ( id ) => async (dispatch) => {
     mode: "cors",
   }).then((response) => {
     if (response.status === 200){
-      return response.json();
-    } else {
-      console.log("Wrong Token!!!");
-    }
-    return false;
-  })
-  .then((data) => {
-    if (data) {
+      setLoadingStatus(false);
       dispatch(deleteAddress(id));
     }
   })

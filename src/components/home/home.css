@@ -1,6 +1,6 @@
 .home-container {
   width: 100vw;
-  height: 94vh;
+  height: 93vh;
   overflow-y: auto;
 }
 
@@ -11,21 +11,33 @@
   padding: 0;
 }
 
+.li-container {
+  list-style: none;
+  padding: 10px;
+}
+
 .address-container {
   background-color: #407097;
-  margin: 10px;
-  padding: 20px;
+  padding: 20px 0 0 0;
   border-radius: 10px;
   color: white;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   box-shadow: 0 0 3px 0 black;
 }
 
-.address-part {
+.btns-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  margin: 10px 0 0 0;
+}
+
+.address-part {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
 
 .address-part p {
@@ -34,40 +46,47 @@
 }
 
 .edit-address-btn {
-  border: 3px solid #2b779b;
   color: #2b779b;
-  border-radius: 10px;
   padding: 10px;
   background-color: white;
   font-size: 20px;
+  border-bottom-left-radius: 10px;
+  width: 50%;
+  border: 0;
+  text-align: center;
+  text-decoration: none;
+  border-top: 1px solid grey;
+  border-right: 1px solid grey;
 }
 
 .edit-address-btn:hover {
   color: white;
   background-color: #2b779b;
-  border: 3px solid #ffffff;
 }
 
 .del-address-btn {
-  border: 3px solid #ec1515;
   color: #ec1515;
-  border-radius: 10px;
   padding: 10px;
   background-color: white;
   font-size: 20px;
+  border-bottom-right-radius: 10px;
+  width: 50%;
+  border: 0;
+  border-top: 1px solid grey;
 }
 
 .del-address-btn:hover {
   color: white;
   background-color: #ec1515;
-  border: 3px solid #ffffff;
 }
 
 .no-address-tittle {
   width: 100%;
   text-align: center;
-  font-size: 23px;
+  font-size: 28px;
   margin: 0;
+  color: grey;
+  user-select: none;
 }
 
 .home-add-address-btn {
