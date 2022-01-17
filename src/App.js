@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {
+  Routes,
+  Route,
+} from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Navbar from './components/navbar/navbar';
+import HomePage from './components/home/home';
+import Session from './components/session/session';
+import NewAddress from './components/addresses/newaddress';
 
 function App() {
+  const { session } = useSelector((state) => state);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {
+        (session.status) ?
+          <>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/address/new" element={<NewAddress />} />
+            </Routes>
+          </>
+        :
+          <Session />
+      }
+    </>
   );
 }
 
