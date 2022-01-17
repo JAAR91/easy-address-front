@@ -12,7 +12,7 @@ const HomePage = () => {
 
   useEffect(() => {
     loadAddresses();
-  }, []);
+  }, [loadAddresses]);
 
   return (
     <div className="home-container">
