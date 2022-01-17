@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import LogOut from '../logout.';
 import './navbar.css';
 
 const Navbar = () => {
@@ -41,9 +42,8 @@ const Navbar = () => {
           </li>
           ))
         }
-        <li className="nav-item log-out py-2">
-                  {/* <LogOut text={link.text.toUpperCase()} /> */}
-                  log out
+        <li className="link-container">
+          <LogOut />
         </li>
       </ul>
     </nav>

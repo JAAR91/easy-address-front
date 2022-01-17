@@ -1,9 +1,11 @@
 const NEW_SESSION = 'EASE_ADDRESS/SESSION/NEW_USER';
+const LOG_OUT_SESSION = 'EASE_ADDRESS/SESSION/LOG_OUT_SESSION';
 
 let initialState = {
   status: false,
   token: "",
 };
+
 const localData = JSON.parse(localStorage.getItem("easy-address-data"));
 if (localData) {
   initialState = localData;
@@ -13,10 +15,17 @@ const saveToLocal = (apiData) => {
   localStorage.setItem("easy-address-data", JSON.stringify(apiData));
 };
 
-
 export const newSession = (payload) => ({
   type: NEW_SESSION,
   payload,
+});
+
+export const logOutSession = () => ({
+  type: LOG_OUT_SESSION,
+  payload: {
+    status: false,
+    token: "",
+  },
 });
 
 export const newUserFetch = ( username, password ) => async (dispatch) => {
@@ -78,6 +87,9 @@ export const reducer = (state = initialState, action) => {
       };
       saveToLocal(newState);
       return newState;
+    case LOG_OUT_SESSION:
+      localStorage.removeItem("easy-address-data");
+      return action.payload;
     default:
       return state;
   }

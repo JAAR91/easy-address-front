@@ -20,6 +20,7 @@
   height: 100%;
   display: flex;
   align-items: flex-end;
+  padding: 0;
 }
 
 .link {
@@ -38,4 +39,17 @@
 .active {
   background-color: white;
   color: #503570;
+}
+
+.logout-link {
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  color: rgb(255, 253, 157);
+  padding: 10px;
+  font-size: 17px;
+}
+
+.logout-link:hover {
+  color: red;
+  text-shadow: 0 0 10px rgb(255, 255, 255);
 }
