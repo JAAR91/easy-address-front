@@ -1,5 +1,5 @@
 const coPoMexApi = async (postal_code, updateMunicipio, updateEstado, updatePais, setColList, setStage, setZipLoading) => {
-  await fetch(`${process.env.REACT_APP_COPOMEX_API_KEY}${postal_code}?token=pruebas`,{
+  await fetch(`${process.env.REACT_APP_COPOMEX_API_KEY}${postal_code}?token=${process.env.REACT_APP_COPOMEX_API_TOKEN}`,{
     method: 'GET',
     headers: { "Content-Type": "application/json" },
     redirect: 'follow',

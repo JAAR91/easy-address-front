@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { newAddressFetch } from '../../redux/address/address';
 import { updateAddressFetch } from '../../redux/address/address';
-import coPoMexApi from '../../logic/codopomex';
+import coPoMexApi from '../../logic/copoMex';
 import LoadingSmall from '../loadingSmall';
 import Loading from '../loading';
 
@@ -110,7 +110,7 @@ const AddressForm = (props) => {
   }
 
   return (
-    <form className="address-form" onSubmit={(e) => e.preventDefault()}>
+    <form className="address-form" onSubmit={(e) => e.preventDefault()} data-testid="addresses-form">
       <Loading status={submitLoadin} />
       <h1 className="text-info fs-1 text-center mb-3">Agregar una nueva Direccion</h1>
       <div className="row m-0 p-0">
