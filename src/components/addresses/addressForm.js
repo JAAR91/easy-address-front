@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { newAddressFetch } from '../../redux/address/address';
 import { updateAddressFetch } from '../../redux/address/address';
-import coPoMexApi from '../../logic/codopomex';
+import coPoMexApi from '../../logic/copoMex';
 import LoadingSmall from '../loadingSmall';
 import Loading from '../loading';
 
