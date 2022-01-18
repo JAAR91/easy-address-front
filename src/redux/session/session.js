@@ -29,7 +29,7 @@ export const logOutSession = () => ({
 });
 
 export const newUserFetch = ( username, password, setLoading, setMsg ) => async (dispatch) => {
-  await fetch('https://jaar-easy-address.herokuapp.com/api/v1/user/new', {
+  await fetch(process.env.REACT_APP_EASY_ADDRESS_NEW_USER_API, {
     method: 'POST',
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -56,7 +56,7 @@ export const newUserFetch = ( username, password, setLoading, setMsg ) => async 
 };
 
 export const loginFetch = ( username, password, setLoading, setMsg ) => async (dispatch) => {
-  await fetch('https://jaar-easy-address.herokuapp.com/api/v1/login', {
+  await fetch(process.env.REACT_APP_EASY_ADDRESS_LOGIN_API, {
     method: 'POST',
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

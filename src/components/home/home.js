@@ -11,7 +11,7 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const loadAddresses = bindActionCreators(addressFetch, dispatch);
   const navigate = useNavigate();
-
+  
   const newAddressBtn = () => {
     navigate("/address/new");
   };

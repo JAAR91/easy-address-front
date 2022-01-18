@@ -86,15 +86,16 @@ const AddressForm = (props) => {
     }
   };
 
+  const resetFormData = () => {
+    setFormData(props.data);
+  }
+
   const handleNewSubmit = () => {
     setSubmitLoading(true);
     const { 
       colonia, ext_number, int_number, calle,
       municipio, postal_code, estado, pais } = formData;
-    addressAction(colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais, setSubmitLoading, setMessage, setStage);
-    if (message === "Direccion Agregada!"){
-      setFormData(props.data);
-    }
+    addressAction(colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais, setSubmitLoading, setMessage, setStage, resetFormData);
   }
 
   const handleUpdateSubmit = () => {
@@ -231,12 +232,12 @@ const AddressForm = (props) => {
       <div className={`${(colList.length > 0) ? "colonia-lista-container" : "d-none"}`}>
         <div className="colonia-lista">
           <p>Haz click si ves tu colonia abajo</p>
-          <ul className="row m-0 w-100">
+          <ul className="row m-0 w-100 p-0">
             {
               colList.map((col, index) => {
                 const i = index + 1;
                 return (
-                  <li className="col-3 list-group-item bg-transparent border-0 p-2">
+                  <li className="col-12 col-md-6 col-lg-4 col-xl-3 list-group-item bg-transparent border-0 p-2">
                     <button
                       key={i}
                       className="text-wrap col-btn w-100"

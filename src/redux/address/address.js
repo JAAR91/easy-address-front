@@ -27,7 +27,7 @@ export const updateAddress = (payload) => ({
 
 export const addressFetch = ( username, password ) => async (dispatch) => {
   const { token } = JSON.parse(localStorage.getItem("easy-address-data"));
-  await fetch('https://jaar-easy-address.herokuapp.com/api/v1/address', {
+  await fetch(process.env.REACT_APP_EASY_ADDRESS_ADDRESS_LIST_API, {
     method: 'GET',
     headers: { 
       "Content-Type": "application/json",
@@ -50,9 +50,9 @@ export const addressFetch = ( username, password ) => async (dispatch) => {
   .catch((error) => console.log(error));
 };
 
-export const newAddressFetch = ( colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais, setSubmitLoading, setMessage, setStage) => async (dispatch) => {
+export const newAddressFetch = ( colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais, setSubmitLoading, setMessage, setStage, resetFormData) => async (dispatch) => {
   const { token } = JSON.parse(localStorage.getItem("easy-address-data"));
-  await fetch('https://jaar-easy-address.herokuapp.com/api/v1/address/new', {
+  await fetch(process.env.REACT_APP_EASY_ADDRESS_ADDRESS_NEW_API, {
     method: 'POST',
     headers: { 
       "Content-Type": "application/json",
@@ -72,6 +72,7 @@ export const newAddressFetch = ( colonia, ext_number, int_number, calle, municip
   })
   .then((data) => {
     if (data) {
+      resetFormData();
       setStage(1);
       setMessage("Direccion Agregada!");
       dispatch(newAddress({colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais}));
@@ -86,7 +87,7 @@ export const newAddressFetch = ( colonia, ext_number, int_number, calle, municip
 
 export const deleteAddressFetch = ( id, setLoadingStatus ) => async (dispatch) => {
   const { token } = JSON.parse(localStorage.getItem("easy-address-data"));
-  await fetch(`https://jaar-easy-address.herokuapp.com/api/v1/address/delete/${id}`, {
+  await fetch(`${process.env.REACT_APP_EASY_ADDRESS_ADDRESS_DELETE_API}${id}`, {
     method: 'DELETE',
     headers: { 
       "Authorization" : token
@@ -105,7 +106,7 @@ export const deleteAddressFetch = ( id, setLoadingStatus ) => async (dispatch) =
 
 export const updateAddressFetch = ( id, colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais, setSubmitLoading, setMessage ) => async (dispatch) => {
   const { token } = JSON.parse(localStorage.getItem("easy-address-data"));
-  await fetch(`https://jaar-easy-address.herokuapp.com/api/v1/address/update/${id}`, {
+  await fetch(`${process.env.REACT_APP_EASY_ADDRESS_ADDRESS_UPDATE_API}${id}`, {
     method: 'PATCH',
     headers: { 
       "Content-Type": "application/json",
