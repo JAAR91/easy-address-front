@@ -103,7 +103,7 @@ export const deleteAddressFetch = ( id, setLoadingStatus ) => async (dispatch) =
   });
 };
 
-export const updateAddressFetch = ( id, colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais, setSubmitLoading ) => async (dispatch) => {
+export const updateAddressFetch = ( id, colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais, setSubmitLoading, setMessage ) => async (dispatch) => {
   const { token } = JSON.parse(localStorage.getItem("easy-address-data"));
   await fetch(`https://jaar-easy-address.herokuapp.com/api/v1/address/update/${id}`, {
     method: 'PATCH',
@@ -119,7 +119,7 @@ export const updateAddressFetch = ( id, colonia, ext_number, int_number, calle, 
     if (response.status === 200){
       return response.json();
     } else {
-      console.log("Wrong Token!!!");
+      setMessage("No se puedo actualizar la direccion");
       setSubmitLoading(false);
     }
     return false;
@@ -132,6 +132,7 @@ export const updateAddressFetch = ( id, colonia, ext_number, int_number, calle, 
   })
   .catch((error) => {
     setSubmitLoading(false);
+    setMessage("Error de conexion intentalo mas tarde");
   });
 };
 

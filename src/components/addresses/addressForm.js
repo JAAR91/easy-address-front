@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate  } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { newAddressFetch } from '../../redux/address/address';
@@ -12,6 +13,7 @@ import Loading from '../loading';
 const AddressForm = (props) => {
   const { newAddress } = props;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const addressAction = bindActionCreators(newAddressFetch, dispatch);
   const addressActionUpdate = bindActionCreators(updateAddressFetch, dispatch);
   const [formData, setFormData] = useState(props.data);
@@ -100,7 +102,10 @@ const AddressForm = (props) => {
     const { 
       id, colonia, ext_number, int_number, calle,
       municipio, postal_code, estado, pais } = formData;
-      addressActionUpdate(id, colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais, setSubmitLoading);
+      addressActionUpdate(id, colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais, setSubmitLoading, setMessage);
+    if (message.length ===0) {
+      navigate("/");
+    }
   }
 
   return (
