@@ -48,10 +48,12 @@ const AddressForm = (props) => {
   };
 
   const updatePostal = (postal_code) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      postal_code,
-    }))
+    if (postal_code.length < 6){
+      setFormData((prevState) => ({
+        ...prevState,
+        postal_code,
+      }))
+    }
   };
 
   const updateEstado = (estado) => {
@@ -83,66 +85,80 @@ const AddressForm = (props) => {
   }
 
   return (
-    <form className="login-form" onSubmit={(e) => e.preventDefault()}>
-      <label className="login-tittle">Login</label>
-      <input
-        type="text"
-        className="login-input"
-        value={formData.colonia} 
-        onChange={(e) => updateCol(e.target.value)}
-        placeholder="Colonia"
-      />
-      <input
-        type="text"
-        className="login-input"
-        value={formData.ext_number} 
-        onChange={(e) => updateExt(e.target.value)}
-        placeholder="Ext #"
-      />
-      <input
-        type="text"
-        className="login-input"
-        value={formData.int_number} 
-        onChange={(e) => updateInt(e.target.value)}
-        placeholder="Int #"
-      />
-      <input
-        type="text"
-        className="login-input"
-        value={formData.calle} 
-        onChange={(e) => updateCalle(e.target.value)}
-        placeholder="Calle"
-      />
-      <input
-        type="text"
-        className="login-input"
-        value={formData.municipio} 
-        onChange={(e) => updateMunicipio(e.target.value)}
-        placeholder="Municipio"
-      />
-      <input
-        type="text"
-        className="login-input"
-        value={formData.postal_code} 
-        onChange={(e) => updatePostal(e.target.value)}
-        placeholder="Codigo Postal"
-      />
-      <input
-        type="text"
-        className="login-input"
-        value={formData.estado} 
-        onChange={(e) => updateEstado(e.target.value)}
-        placeholder="Estado"
-      />
-      <input
-        type="text"
-        className="login-input"
-        value={formData.pais} 
-        onChange={(e) => updatePais(e.target.value)}
-        placeholder="Pais"
-      />
+    <form className="address-form" onSubmit={(e) => e.preventDefault()}>
+      <h1 className="text-info fs-1 text-center mb-3">Agregar una nueva Direccion</h1>
+      <div className="row m-0 p-0">
+        <div className="col-6 d-flex flex-column">
+          <label className="text-dark fs-5 my-2" >Codigo Postal</label>
+          <input
+            type="number"
+            className="login-input w-50"
+            value={formData.postal_code} 
+            onChange={(e) => updatePostal(e.target.value)}
+            placeholder="Codigo Postal"
+          />
+          <label className="text-dark fs-5 my-2">Municipio</label>
+          <input
+            type="text"
+            className="login-input"
+            value={formData.municipio} 
+            onChange={(e) => updateMunicipio(e.target.value)}
+            placeholder="Municipio"
+          />
+          <label className="text-dark fs-5 my-2">Estado</label>
+          <input
+            type="text"
+            className="login-input"
+            value={formData.estado} 
+            onChange={(e) => updateEstado(e.target.value)}
+            placeholder="Estado"
+          />
+          <label className="text-dark fs-5 my-2">Pais</label>
+          <input
+            type="text"
+            className="login-input"
+            value={formData.pais} 
+            onChange={(e) => updatePais(e.target.value)}
+            placeholder="Pais"
+          />
+        </div>
+        <div className="col-6 d-flex flex-column">
+          <label className="text-dark fs-5 my-2">Colonia</label>
+          <input
+            type="text"
+            className="login-input"
+            value={formData.colonia} 
+            onChange={(e) => updateCol(e.target.value)}
+            placeholder="Colonia"
+          />
+          <label className="text-dark fs-5 my-2">Ext #</label>
+          <input
+            type="text"
+            className="login-input"
+            value={formData.ext_number} 
+            onChange={(e) => updateExt(e.target.value)}
+            placeholder="Ext #"
+          />
+          <label className="text-dark fs-5 my-2">Int #</label>
+          <input
+            type="text"
+            className="login-input"
+            value={formData.int_number} 
+            onChange={(e) => updateInt(e.target.value)}
+            placeholder="Int #"
+          />
+          <label className="text-dark fs-5 my-2">Calle</label>
+          <input
+            type="text"
+            className="login-input"
+            value={formData.calle} 
+            onChange={(e) => updateCalle(e.target.value)}
+            placeholder="Calle"
+          />
+        </div>
+      </div>
       <button
-        className={`${( newAddress ? "" : "d-none" )} login-submit`}
+        className={`${( newAddress ? "" : "d-none" )} new-address-btn`}
         onClick={handleNewSubmit}
       >
         Agregar Direccion

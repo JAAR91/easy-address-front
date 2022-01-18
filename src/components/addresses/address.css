@@ -45,3 +45,29 @@
   background-color: #27b947;
   color: #ffffff;
 }
+
+.new-address-btn {
+  width: 200px;
+  border: 3px solid rgb(45, 190, 201);
+  background-color: white;
+  color: rgb(45, 190, 201);
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 20px;
+  margin: 0 auto 0 auto;
+}
+
+.new-address-btn:hover {
+  border: 3px solid rgb(171, 87, 192);
+  background-color: rgb(54, 168, 63);
+  color: rgb(255, 255, 255);
+}
+
+.address-form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0 20px 0;
+  border-radius: 10px;
+  background-color: rgb(243, 242, 235);
+}
