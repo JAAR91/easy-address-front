@@ -59,4 +59,11 @@ describe('Reservation Page', () => {
     renderWithRedux(<App />);    
     expect(document.querySelectorAll("input").length).toBe(8);
   });
+
+  test('The edit button take you to the address from with all the info already on the inputs', () => {
+    renderWithRedux(<App />);
+    userEvent.click(screen.getByText('INICIO'));
+    userEvent.click(screen.getByTestId('addresses-container').childNodes[0].childNodes[0].childNodes[1].childNodes[0]);
+    expect(document.querySelector(".address-zipcode").value).toBe("34534");
+  });
 });
