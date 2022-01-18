@@ -86,15 +86,16 @@ const AddressForm = (props) => {
     }
   };
 
+  const resetFormData = () => {
+    setFormData(props.data);
+  }
+
   const handleNewSubmit = () => {
     setSubmitLoading(true);
     const { 
       colonia, ext_number, int_number, calle,
       municipio, postal_code, estado, pais } = formData;
-    addressAction(colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais, setSubmitLoading, setMessage, setStage);
-    if (message === "Direccion Agregada!"){
-      setFormData(props.data);
-    }
+    addressAction(colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais, setSubmitLoading, setMessage, setStage, resetFormData);
   }
 
   const handleUpdateSubmit = () => {
