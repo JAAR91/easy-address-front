@@ -79,6 +79,24 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+## Usage
+This project requires the usage of a .env.local file to run locally, so make sure you create the file and enter the following information:
+```
+REACT_APP_COPOMEX_API_KEY="https://api.copomex.com/query/info_cp/"
+REACT_APP_COPOMEX_API_TOKEN="prueba"
+REACT_APP_EASY_ADDRESS_NEW_USER_API="https://jaar-easy-address.herokuapp.com/api/v1/user/new"
+REACT_APP_EASY_ADDRESS_LOGIN_API="https://jaar-easy-address.herokuapp.com/api/v1/login"
+REACT_APP_EASY_ADDRESS_ADDRESS_LIST_API="https://jaar-easy-address.herokuapp.com/api/v1/address"
+REACT_APP_EASY_ADDRESS_ADDRESS_NEW_API="https://jaar-easy-address.herokuapp.com/api/v1/address/new"
+REACT_APP_EASY_ADDRESS_ADDRESS_UPDATE_API="https://jaar-easy-address.herokuapp.com/api/v1/address/update/"
+REACT_APP_EASY_ADDRESS_ADDRESS_DELETE_API="https://jaar-easy-address.herokuapp.com/api/v1/address/delete/"
+```
+
+If you want to user the SEPOMEX service, you have to create and account with them, you will get api token on your email, and replace it with the word prueba. To use it locally you change all  the herou links for one like this:
+```
+localhost:3000/api/v1 
+```
+Remember to add the full link following the information of the backend [here](https://github.com/JAAR91/easy-address).
 
 👨‍💻 **Jose Alberto Arriaga Ramos**
 
