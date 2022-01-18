@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { loginFetch } from '../../redux/session/session';
+import Loading from '../loading';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -10,12 +11,25 @@ const Login = () => {
     username: "",
     password: ""
   });
+  const [ loading, setLoading ] = useState(false);
+  const [ btnState, setBtnState ] = useState(false);
+  const [ msg, setMsg ] = useState("");
+
+  const formValidation = () => {
+    const { username, password } = formData;
+    if (username.length > 3 && password.length > 4){
+      setBtnState(true);
+    } else {
+      setBtnState(false);
+    }
+  };
 
   const updateUsername = (username) => {
     setFormData((prevState) => ({
       ...prevState,
       username,
     }))
+    formValidation();
   };
 
   const updatePassword = (password) => {
@@ -23,26 +37,32 @@ const Login = () => {
       ...prevState,
       password,
     }))
+    formValidation();
   };
 
   const handleSubmit = () => {
-    const { username, password} = formData;
-    loginAction(username, password);
+    if (btnState) {
+      setLoading(true);
+      const { username, password} = formData;
+      loginAction(username, password, setLoading, setMsg);
+    } else {
+      setMsg("Todos los campos son requeridos");
+    } 
   }
 
   return (
     <form className="login-form" onSubmit={(e) => e.preventDefault()}>
-      <label className="login-tittle">Login</label>
+      <label className="login-tittle">Iniciar Sesion</label>
       <input
         type="text"
-        className="login-input"
+        className={(msg && formData.username.length < 4) ? "invalid-input" : "login-input"}
         value={formData.username} 
         onChange={(e) => updateUsername(e.target.value)}
-        placeholder="Ingresa nombre de usuario"
+        placeholder="Nombre de usuario"
       />
       <input
         type="password"
-        className="login-input"
+        className={(msg && formData.password.length < 4) ? "invalid-input" : "login-input"}
         value={formData.password} 
         onChange={(e) => updatePassword(e.target.value)}
         placeholder="Contrasena"
@@ -51,8 +71,10 @@ const Login = () => {
         className="login-submit"
         onClick={handleSubmit}
       >
-        Login
+        Iniciar Sesion
       </button>
+      <Loading status={loading} />
+      <p className="text-danger text-center my-1">{msg}</p>
     </form>
   );
 };

@@ -15,11 +15,6 @@ const Navbar = () => {
       path: '/address/new',
       text: 'Agregar Direcciones',
     },
-    {
-      id: 3,
-      path: '/reservations',
-      text: 'Reservations',
-    },
   ];
 
   return (

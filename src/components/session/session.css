@@ -4,20 +4,30 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #000000;
+  background-image: url("../../img/login_pattern.jpg");
+  background-position: center;
+  background-size: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.forms-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #247188;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 0 black;
+  padding: 40px;
+}
+
 .login-form {
   display: flex;
   flex-direction: column;
-  background-color: #247188;
-  padding: 40px;
   color: #ffffff;
-  border-radius: 10px;
   margin: 10px;
 }
 
@@ -36,12 +46,21 @@
   color: #0044aa;
 }
 
+.invalid-input {
+  margin-bottom: 20px;
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  border: 3px solid #da4035;
+  color: #0044aa;
+}
+
 .login-submit {
   padding: 10px;
   font-size: 20px;
   border-radius: 10px;
   border: 3px solid #02802c;
-  width: 140px;
+  width: 180px;
   align-self: center;
   color: #00a700;
   background-color: #ffffff;
@@ -55,11 +74,11 @@
 .session-link {
   border: 0;
   background-color: #ffffff00;
-  color: #ffffff;
+  color: #f4feff;
   font-size: 20px;
 }
 
 .session-link:hover {
   cursor: pointer;
-  color: #56caf8;
+  color: #e1ff90;
 }

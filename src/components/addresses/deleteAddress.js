@@ -1,28 +1,30 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { deleteAddressFetch } from '../../redux/address/address';
+import DeleteConfirmation from './deleteConfirmation';
 
 const DeleteAddress = (props) => {
   const { id } = props;
-  const dispatch = useDispatch();
-  const btnAction = bindActionCreators(deleteAddressFetch, dispatch);
-
-  const deleteAddressBtn = () => {
-    btnAction(id);
-  };
-
+  const [ windowStatus, setWindowStatus ] = useState(false);
+ 
   return (
-    <button
-      type="button"
-      className="del-address-btn"
-      onClick={deleteAddressBtn}
-    >
-      Borrar
-    </button>
+    <>
+      <button
+        type="button"
+        className="del-address-btn"
+        onClick={() => setWindowStatus(true)}
+      >
+        Borrar
+      </button>
+      {
+        windowStatus ?
+          <DeleteConfirmation id={id} setWindowStatus={setWindowStatus} />
+        :
+          <div />
+      }
+    </>
   );
 };
+
 DeleteAddress.propTypes = { id: PropTypes.number.isRequired };
 
 export default DeleteAddress;
