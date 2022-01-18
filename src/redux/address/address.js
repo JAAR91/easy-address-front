@@ -50,7 +50,7 @@ export const addressFetch = ( username, password ) => async (dispatch) => {
   .catch((error) => console.log(error));
 };
 
-export const newAddressFetch = ( colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais ) => async (dispatch) => {
+export const newAddressFetch = ( colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais, setSubmitLoading, setMessage, setStage) => async (dispatch) => {
   const { token } = JSON.parse(localStorage.getItem("easy-address-data"));
   await fetch('https://jaar-easy-address.herokuapp.com/api/v1/address/new', {
     method: 'POST',
@@ -66,16 +66,22 @@ export const newAddressFetch = ( colonia, ext_number, int_number, calle, municip
     if (response.status === 200){
       return response.json();
     } else {
-      console.log("Wrong Token!!!");
+      setMessage("Error, nose puedo guardar la direccion, asegurate que todos los campos con (*) este llenos!");
     }
     return false;
   })
   .then((data) => {
     if (data) {
+      setStage(1);
+      setMessage("Direccion Agregada!");
       dispatch(newAddress({colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais}));
     }
+    setSubmitLoading(false);
   })
-  .catch((error) => console.log(error));
+  .catch((error) => {
+    setSubmitLoading(false);
+    setMessage("Error de conexion intentalo mas tarde!");
+  });
 };
 
 export const deleteAddressFetch = ( id, setLoadingStatus ) => async (dispatch) => {
@@ -92,10 +98,12 @@ export const deleteAddressFetch = ( id, setLoadingStatus ) => async (dispatch) =
       dispatch(deleteAddress(id));
     }
   })
-  .catch((error) => console.log(error));
+  .catch((error) => {
+    setLoadingStatus(false);
+  });
 };
 
-export const updateAddressFetch = ( id, colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais ) => async (dispatch) => {
+export const updateAddressFetch = ( id, colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais, setSubmitLoading ) => async (dispatch) => {
   const { token } = JSON.parse(localStorage.getItem("easy-address-data"));
   await fetch(`https://jaar-easy-address.herokuapp.com/api/v1/address/update/${id}`, {
     method: 'PATCH',
@@ -112,15 +120,19 @@ export const updateAddressFetch = ( id, colonia, ext_number, int_number, calle, 
       return response.json();
     } else {
       console.log("Wrong Token!!!");
+      setSubmitLoading(false);
     }
     return false;
   })
   .then((data) => {
+    setSubmitLoading(false);
     if (data) {
       dispatch(updateAddress({id, colonia, ext_number, int_number, calle, municipio, postal_code, estado, pais}));
     }
   })
-  .catch((error) => console.log(error));
+  .catch((error) => {
+    setSubmitLoading(false);
+  });
 };
 
 export const reducer = (state = initialState, action) => {

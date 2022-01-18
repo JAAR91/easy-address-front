@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addressFetch } from '../../redux/address/address';
-import googleApi from '../../Logic/googleApi';
 
 const Address = () => {
   const dispatch = useDispatch();
@@ -14,8 +13,6 @@ const Address = () => {
     loadAddresses();
     // eslint-disable-next-line
   }, []);
-
-  googleApi();
 
   const { id } = useParams();
   const { addresses } = useSelector((state) => state);
@@ -42,8 +39,10 @@ const Address = () => {
       false
   );
   return (
-    <div className='container'>
-      <AddressForm data={data} newAddress={newAddress} />
+    <div className="address-page-container">
+      <div className='container'>
+        <AddressForm data={data} newAddress={newAddress} />
+      </div>
     </div>
   );
 };

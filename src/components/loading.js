@@ -10,7 +10,7 @@ const Loading = (props) => {
       <div className="spinner-border text-ligth" role="status">
         <span className="visually-hidden">Loading...</span>
       </div>
-      <p>Loading, Please wait...</p>
+      <p>Cargando, Por favor espere...</p>
     </div>
   );
 };
