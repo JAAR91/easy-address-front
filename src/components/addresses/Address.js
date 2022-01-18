@@ -39,8 +39,10 @@ const Address = () => {
       false
   );
   return (
-    <div className='container'>
-      <AddressForm data={data} newAddress={newAddress} />
+    <div className="address-page-container">
+      <div className='container'>
+        <AddressForm data={data} newAddress={newAddress} />
+      </div>
     </div>
   );
 };
