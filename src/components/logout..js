@@ -17,7 +17,7 @@ const LogOut = () => {
       className="logout-link"
       onClick={logginOutBtnHandle}
     >
-      CERRAR SESSION
+      CERRAR SESION
     </button>
   );
 };
