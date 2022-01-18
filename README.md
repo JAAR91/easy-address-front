@@ -1,4 +1,14 @@
-# Getting Started with Create React App
+# Easy Address Page
+
+This is a project made to store addresses from mexico. It display the list of addresses stored and allows you to create, update and delete addresses. Addresses are verify by the [COPOMEX](https://api.copomex.com/) api service that helps to identify addresses.
+
+Page es completely responsive so it works with phones, tablets or desktop apps.
+
+![screenshot](./img/addressform.png) ![screenshot](./img/colList.png) ![screenshot](./img/home.png) ![screenshot](./img/homecollist.png) ![screenshot](./img/homephone.png) ![screenshot](./img/phonelogin.png)
+
+## Backend
+
+This proejct backend was done with rails, and the repository link is on [link](https://github.com/JAAR91/easy-address)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -68,3 +78,34 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+👨‍💻 **Jose Alberto Arriaga Ramos**
+
+- GitHub: [@jaarkira](https://github.com/jaarkira )
+- Twitter: [@91_jaar](https://twitter.com/91_jaar )
+- LinkedIn: [Jose Arriaga](https://www.linkedin.com/in/jaar/)
+
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/DanSam5K/Webflix-Index/issues).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+
+## Acknowledgments
+
+- Hat tip to anyone whose code was used 🔰
+- Inspiration 💘
+- Microverse program ⚡
+- Our standup team 🏹
+- Our family's support 🙌
+
+## 📝 License
+
+This project is [MIT](./LICENSE) licensed.

@@ -24,7 +24,7 @@ const HomePage = () => {
   return (
     <div className="home-container">
       <div className="container">
-        <ul className="row m-0 p-0">
+        <ul className="row m-0 p-0" data-testid="addresses-container">
           {
             (addresses.length > 0) ?
               addresses.map((address) => (
